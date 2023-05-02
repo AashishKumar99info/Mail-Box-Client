@@ -1,8 +1,10 @@
-import Header from "./Header"
+import Header from "./Header";
 import { useSelector } from "react-redux";
+import { Container} from "react-bootstrap";
+import MyEditor from "./MyEditor";
 
 const HomePage = ()=>{
- const userAuth = useSelector(state=> state.auth.userAuth);
+ const userAuth = useSelector((state)=> state.auth.userAuth);
 
 if(!userAuth.isLogin){
     return <p> Page Not Found</p>;
@@ -10,9 +12,9 @@ if(!userAuth.isLogin){
     return (
         <>
         <Header></Header>
-        <p>
-            welcome to mail box 
-        </p>
+        <Container>
+            <MyEditor></MyEditor> 
+        </Container>
         </>
     )
 }
