@@ -1,9 +1,8 @@
-import Header from "./Header";
 import { useSelector } from "react-redux";
 import { Container} from "react-bootstrap";
 import MyEditor from "./MyEditor";
 
-const HomePage = ()=>{
+const ComposeEmail = ()=>{
  const userAuth = useSelector((state)=> state.auth.userAuth);
 
 if(!userAuth.isLogin){
@@ -11,7 +10,6 @@ if(!userAuth.isLogin){
 }
     return (
         <>
-        <Header></Header>
         <Container>
             <MyEditor></MyEditor> 
         </Container>
@@ -19,4 +17,4 @@ if(!userAuth.isLogin){
     )
 }
 
-export default HomePage ;
+export default ComposeEmail ;

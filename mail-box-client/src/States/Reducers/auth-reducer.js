@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const idToken = localStorage.getItem('idToken') ? localStorage.getItem('idToken') : null ;
-const userIsLogin = idToken === 'null' ? false : true ;
+const userIsLogin = !!idToken;
 const userID = localStorage.getItem('userID') ? localStorage.getItem('userID') : null ;
 const email = localStorage.getItem('email') ? localStorage.getItem('email') : null ;
 

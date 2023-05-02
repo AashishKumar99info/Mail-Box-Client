@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import LoginSignup from "./components/LoginSignup/LoginSignup";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./components/Pages/Home/HomePage";
+import ComposeEmail from "./components/Pages/Home/ComposeEmail";
+import Header from "./components/Pages/Home/Header";
 
 function App() {
   const isLogin = useSelector(state=> state.auth.userAuth.isLogin);
@@ -10,11 +11,12 @@ function App() {
 
   return (
     <>
+    <Header></Header>
     <Routes>
       {!isLogin && <Route path={'/'} element={<LoginSignup></LoginSignup>}></Route>}
-      {isLogin && <Route path={'/home'} element={<HomePage/>}></Route>}
+      {isLogin && <Route path={'/compose-email'} element={<ComposeEmail/>}></Route>}
       {!isLogin && <Route path={'*'} element={<LoginSignup/>}></Route>}
-      {isLogin && <Route path={'*'} element={<HomePage/>}></Route>}
+      {isLogin && <Route path={'*'} element={<ComposeEmail />}></Route>}
 
     </Routes>
 
