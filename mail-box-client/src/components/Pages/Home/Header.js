@@ -8,6 +8,11 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     const dispatch = useDispatch();
     const logoutHandler = () => {
+
+        localStorage.setItem('idToken');
+        localStorage.setItem('userID');
+        localStorage.setItem('email');
+        
         dispatch(
             setAuthantication({
                 idToken: null,
@@ -16,9 +21,7 @@ const Header = () => {
                 email: null
             })
         );
-        localStorage.setItem('idToken');
-        localStorage.setItem('userID');
-        localStorage.setItem('email');
+       
 
     }
 
