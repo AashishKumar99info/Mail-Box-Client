@@ -12,7 +12,7 @@ const Header = () => {
         localStorage.setItem('idToken');
         localStorage.setItem('userID');
         localStorage.setItem('email');
-        
+
         dispatch(
             setAuthantication({
                 idToken: null,
@@ -21,7 +21,7 @@ const Header = () => {
                 email: null
             })
         );
-       
+
 
     }
 
@@ -38,7 +38,7 @@ const Header = () => {
                             </Link>
                         </Nav.Link>
                         <Nav.Link>
-                            <Link to="/inbox" style={{ textDecoration: "none" }}>
+                            <Link to="/inbox/sentmail" style={{ textDecoration: "none" }}>
                                 Inbox
                             </Link>
                         </Nav.Link>

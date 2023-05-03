@@ -21,8 +21,10 @@ function App() {
       {!isLogin && <Route path={'*'} element={<LoginSignup/>}></Route>}
       {isLogin && <Route path={'*'} element={<ComposeEmail />}></Route>}
       {/* <Route path="inbox" element={<InboxPage/>}></Route> */} {/* this line must be added in the previouse commit*/} 
-      {isLogin&& <Route path="inbox" element={<InboxPage/>}></Route> }
-      <Route path="/inbox/:id" element={<ViewMessage/>}></Route>
+      {isLogin&& <Route path="/inbox" element={<InboxPage/>}></Route> }
+      {isLogin&& <Route path="/inbox/:sentmail" element={<InboxPage/>}></Route> }
+      <Route path="/inbox/message/:id" element={<ViewMessage/>}></Route>
+      <Route path="/inbox/:sentbox/message/:id" element={<ViewMessage/>}></Route>
 
     </Routes>
 
