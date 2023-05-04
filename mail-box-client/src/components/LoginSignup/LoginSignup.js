@@ -1,5 +1,5 @@
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setAuthantication } from "../../States/Reducers/auth-reducer";
 import { useNavigate } from "react-router-dom";
@@ -33,13 +33,10 @@ async function loginAndSignUp(userDetails, signUpMode) {
 }
 
 function LoginSignup() {
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const confirmPasswordRef = useRef("");
+  const [emailInput,setEmailInput] = useState("");
+  const [passwordInput,setPasswordInput] = useState("");
+  const [confirmPasswordInput,setConfirmPasswordInput] = useState("");
   const navTo = useNavigate();
-  const email = emailRef.current.value;
-  const password = passwordRef.current.value;
-  //   const confirmPassword = confirmPasswordRef.current.value ;
   const [signupMode, setSignupMode] = useState(true);
   // const auth = useSelector(state=>state.auth.userAuth);
   const dispatch = useDispatch();
@@ -48,12 +45,14 @@ function LoginSignup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const userDetails = {
-      email: email,
-      password: password,
+      email: emailInput,
+      password: passwordInput,
       returnSecureToken: true,
     };
+    console.log(userDetails)
+
     if (signupMode) {
-      if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      if (passwordInput !== confirmPasswordInput) {
         alert('password mismatch');
         return;
       }
@@ -87,8 +86,8 @@ function LoginSignup() {
                   <Form.Control
                     type="email"
                     placeholder="Enter email"
-                    ref={emailRef}
-
+                    value={emailInput}
+                    onChange={(e) => setEmailInput(e.target.value)}
                   />
                   <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
@@ -100,8 +99,8 @@ function LoginSignup() {
                   <Form.Control
                     type="password"
                     placeholder="Password"
-                    ref={passwordRef}
-
+                    value={passwordInput}
+                    onChange={(e) => setPasswordInput(e.target.value)}
                   />
                 </Form.Group>
 
@@ -110,7 +109,8 @@ function LoginSignup() {
                   <Form.Control
                     type="password"
                     placeholder="Confirm Password"
-                    ref={confirmPasswordRef}
+                    value={confirmPasswordInput}
+                    onChange={(e) => setConfirmPasswordInput(e.target.value)}
 
                   />
                 </Form.Group>}
